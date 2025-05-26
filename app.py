@@ -3,6 +3,7 @@ from supabase import create_client, Client
 from dotenv import load_dotenv
 import os
 from datetime import datetime
+from flask_cors import CORS
 
 load_dotenv()
 url = os.getenv("URL")
@@ -10,6 +11,7 @@ key = os.getenv("KEY")
 supabase: Client = create_client(url, key)
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/messages', methods=['GET'])
 def get_messages():
